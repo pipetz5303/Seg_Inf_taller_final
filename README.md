@@ -14,16 +14,28 @@ Utilizamos 10 imágenes de cada categoría de dispositivo, en este caso servidor
 ![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/01.png)
 2.	Subimos el modelo a Roboflow\
 ![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/02.png)
-3.	Entrenamos el modelo\
+
+**Nota:**\
+Para descargar modelo usar:
+
+```
+from roboflow import Roboflow
+rf = Roboflow(api_key="7Gp6gjXgwWbO2Rx2s9ZI")
+project = rf.workspace("felipes-workspace-uprp3").project("network-audit")
+version = project.version(1)
+dataset = version.download("yolov11")
+```
+
+4.	Entrenamos el modelo\
 ![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/03.png) 
 ![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/04.png)
-4.	Descargamos el archivo best.py una vez entrenado con colab de google\
+5.	Descargamos el archivo best.py una vez entrenado con colab de google\
 ![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/05.png)
-5.	Programa en Python YOLO\
+6.	Programa en Python YOLO\
 ![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/06.png) 
-6.	Creacion de entorno virtual\
+7.	Creacion de entorno virtual\
 ![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/07.png) 
-7.	Pruebas de reconocimiento\
+8.	Pruebas de reconocimiento\
 ![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/08.png) 
  
 ### Modulo 2: Criptografia

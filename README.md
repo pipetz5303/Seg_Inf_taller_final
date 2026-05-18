@@ -5,51 +5,61 @@ Seguridad de la información\
 Felipe Castellanos Sánchez\
 código 1030576147
 ## Proyecto Final
-## Sistema de inventario visual y auditoria de seguridad para Telecomunicaciones
+### Sistema de inventario visual y auditoria de seguridad para Telecomunicaciones
 Objetivo: Desarrollar un sistema automatizado que detecte activos de telecomunicaciones mediante YOLO, asegure su transmisión mediante cifrado y evalue el cumplimiento de la norma ISO27001.\
-Modulo 1: Detección YOLO\
+
+### Modulo 1: Detección YOLO
 1.	Entrenamiento del modelo\
-Utilizamos 10 imágenes de cada categoría de dispositivo, en este caso servidor, firewall, switch, router y hub.
+Utilizamos 10 imágenes de cada categoría de dispositivo, en este caso servidor, firewall, switch, router y hub.\
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/01.png)
+2.	Subimos el modelo a Roboflow\
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/02.png)
+3.	Entrenamos el modelo\
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/03.png) 
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/04.png)
+4.	Descargamos el archivo best.py una vez entrenado con colab de google\
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/05.png)
+5.	Programa en Python YOLO\
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/06.png) 
+6.	Creacion de entorno virtual\
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/07.png) 
+7.	Pruebas de reconocimiento\
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/08.png) 
  
-2.	Subimos el modelo a Roboflow
- 
-3.	Entrenamos el modelo
- 
- 
-4.	Descargamos el archivo best.py una vez entrenado con colab de google
- 
-5.	Programa en Python YOLO
- 
-6.	Creacion de entorno virtual
+### Modulo 2: Criptografia
+8.	Adicion al programa de funciones para encriptar y creación de programa para auditar\
+Una vez confirmamos que funciona la parte del programa de YOLO y el reconocimiento, vamos a implementar la parte de seguridad. En este caso, el programa que creamos va a tener la funcion de cifrado simetrico con una clave para los dos archivos (metadatos e imagen), esta clave será la llave publica que nos comparta el auditor. Pero para tener la llave publica, debemos crear otro programa que se encargue del RSA y cifrado asimetrico
 
- 
-7.	Pruebas de reconocimiento
- 
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/16.png)
 
- 
-Modulo 2: Criptografia
-8.	Adicion al programa y funciones para encriptar
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/17.png)
 
-9.	Programa del auditor para llaves publicas y privadas RSA
- 
- 
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/09.png)
 
 
+9.	Programa del auditor para llaves publicas y privadas RSA\
 
-10.	Funcion de comprobar imagen encriptada
 
- 
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/10.png)
 
-11.	Prueba
+10.	Funcion de comprobar imagen encriptada\
 
- 
-Lado de auditor
- 
- 
- 
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/19.png)
 
-Modulo 3: Auditoria ISO27001
-12.	Inventario de activos: Logro listar todos los routers y switches? Ayuda a mantener el inventario actualizado?
+11.	Prueba\
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/12.png)
+
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/11.png)
+
+**Lado de auditor**\
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/13.png)
+
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/14.png)
+
+![image](https://github.com/pipetz5303/Seg_Inf_taller_final/blob/main/15.png)
+ 
+### Modulo 3: Auditoria ISO27001
+12.	Inventario de activos: Logro listar todos los routers y switches? Ayuda a mantener el inventario actualizado?\
 Control 5.9 (ISO/IEC 27001:2022) / A.8.1.1 (ISO 27001:2013) – Inventario de Información y otros Activos Asociados
 Estado: APLICA
 
@@ -57,9 +67,8 @@ Justificación de Aplicabilidad: Toda organización que gestione infraestructura
 
 El algoritmo detecta de forma visual y clasifica en tiempo real cada activo presente frente a la cámara (generando etiquetas precisas de Router, Switch, Firewall, Servidor).
 
-13.	Uso aceptable de activos: el software de detección solo se usa para inventario?
-
-Control 5.10 (ISO/IEC 27001:2022) / A.8.1.3 (ISO 27001:2013) – Uso Aceptable de Activos
+13.	Uso aceptable de activos: el software de detección solo se usa para inventario?\
+Control 5.10 (ISO/IEC 27001:2022) / A.8.1.3 (ISO 27001:2013) – Uso Aceptable de Activos\
 Estado: APLICA
 
 Justificación de Aplicabilidad: Los activos de software que procesan información visual y topológica de la infraestructura de red corporativa (Data Centers, racks, firewalls, servidores) manejan datos de alta confidencialidad. Se debe garantizar que el uso del software esté restringido estrictamente a funciones de auditoría e inventario autorizadas, evitando que sea desviado para espionaje industrial, fuga de información o mapeo no autorizado de vulnerabilidades físicas.
@@ -68,8 +77,7 @@ Restricción por Política (Alcance Organizacional): El software de detección c
 
 el software no permite almacenar datos en texto plano en la zona no segura. Obliga a que el activo (el software) funcione exclusivamente como un canalizador ciego: captura, cifra y destruye el residuo local, alineándose de forma estricta con el principio de uso aceptable y seguro.
 
-14.	Transferencia de información: se aplica el cifrado al enviar los datos?
-
+14.	Transferencia de información: se aplica el cifrado al enviar los datos?\
 Control 8.12 (ISO/IEC 27001:2022) / A.13.2.1 (ISO 27001:2013) – Transferencia de Información
 Estado: APLICA
 
